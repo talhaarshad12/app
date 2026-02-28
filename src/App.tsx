@@ -9,8 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Send,
-  Download,
-  CheckCircle2
+  Download
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -124,9 +123,6 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [activeProject, setActiveProject] = useState(0);
-  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
 
@@ -179,17 +175,6 @@ function App() {
     setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
-  // Form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormState({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setIsSubmitted(false), 3000);
-  };
 
   // Scroll to section
   const scrollToSection = (id: string) => {
